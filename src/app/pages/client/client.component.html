@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Clients</h1>
+        </div>
+        <div class="row">
+            <div class="card mb-3" style="max-width: 540px;" *ngFor="let client of clients">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img [src]="client.photo" class="card-img" alt="Client photo">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ client.name | titlecase }} {{ client.lastName | titlecase }}</h5>
+                            <p class="card-text">{{ client.email }}</p>
+                            <p class="card-text"><small class="text-muted">{{ client.createdAt}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
