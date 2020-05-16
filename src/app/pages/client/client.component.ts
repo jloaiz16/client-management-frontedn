@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/shared/models/client';
-import { clients } from 'src/app/shared/db/clients.json';
+import { ClientService } from './services/client.service';
+import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/utils/unsubscribe-adapter';
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.scss'],
 })
-export class ClientComponent implements OnInit {
+export class ClientComponent extends UnsubscribeOnDestroyAdapter
+  implements OnInit {
   public clients: Client[] = [];
-  constructor() {}
+  constructor(private clientService: ClientService) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.clients = clients;
+    this.subs.add(
+      this.clientService.getClients().subscribe((response: Client[]) => {
+        this.clients = response;
+      })
+    );
   }
 }
