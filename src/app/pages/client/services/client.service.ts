@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Client } from 'src/app/shared/models/client';
-import { CLIENTS } from 'src/app/shared/db/clients.json';
 import { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientService {
-  constructor() {}
+  private apiUrl: string = environment.apiUrl;
+
+  constructor(private service: HttpClient) {}
 
   /**
    * Method to get all clients
    * @returns clients
    */
   public getClients(): Observable<Client[]> {
-    return of(CLIENTS);
+    return this.service.get<Client[]>(this.apiUrl + 'clients/list');
   }
 }
