@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/shared/models/client';
 import { ClientService } from './services/client.service';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/utils/unsubscribe-adapter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -11,7 +12,8 @@ import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/utils/unsubscribe-ad
 export class ClientComponent extends UnsubscribeOnDestroyAdapter
   implements OnInit {
   public clients: Client[] = [];
-  constructor(private clientService: ClientService) {
+
+  constructor(private clientService: ClientService, private router: Router) {
     super();
   }
 
@@ -21,5 +23,9 @@ export class ClientComponent extends UnsubscribeOnDestroyAdapter
         this.clients = response;
       })
     );
+  }
+
+  goToCreateClient(): void {
+    this.router.navigate(['clients/create']);
   }
 }
