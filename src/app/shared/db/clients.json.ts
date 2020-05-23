@@ -10,7 +10,7 @@ export const CLIENTS: Client[] = [
     photo: 'https://randomuser.me/api/portraits/men/29.jpg',
   },
   {
-    id: 1,
+    id: 2,
     name: 'Richard',
     lastName: 'Pinnot',
     createdAt: '12/04/2020',
@@ -18,7 +18,7 @@ export const CLIENTS: Client[] = [
     photo: 'https://randomuser.me/api/portraits/men/29.jpg',
   },
   {
-    id: 1,
+    id: 3,
     name: 'Richard',
     lastName: 'Pinnot',
     createdAt: '12/04/2020',
@@ -26,7 +26,7 @@ export const CLIENTS: Client[] = [
     photo: 'https://randomuser.me/api/portraits/men/29.jpg',
   },
   {
-    id: 1,
+    id: 4,
     name: 'Richard',
     lastName: 'Pinnot',
     createdAt: '12/04/2020',

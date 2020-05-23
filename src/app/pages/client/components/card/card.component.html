@@ -9,9 +9,18 @@
           {{ client.name | titlecase }} {{ client.lastName | titlecase }}
         </h5>
         <p class="card-text">{{ client.email }}</p>
-        <p class="card-text">
-          <small class="text-muted">{{ client.createdAt }}</small>
-        </p>
+        <div class="card-text row">
+          <small class="text-muted col-7">{{ client.createdAt }}</small>
+          <div class="row col-12">
+            <button class="btn btn-primary col-5" (click)="updateClient()">
+              Update
+            </button>
+            <div class="col-2"></div>
+            <button class="btn btn-primary col-5" (click)="deleteClient()">
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
