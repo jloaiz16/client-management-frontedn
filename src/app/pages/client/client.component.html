@@ -17,7 +17,7 @@
         </button>
       </div>
     </div>
-    <div class="row col-12" *ngIf="clients.length !== 0; else elseBlock">
+    <div class="row col-12" *ngIf="clients.length !== 0">
       <ng-container *ngFor="let client of clients">
         <app-card
           [client]="client"
@@ -25,7 +25,7 @@
         ></app-card>
       </ng-container>
     </div>
-    <div class="row col-12 alert alert-info mt-3" #elseBlock>
+    <div class="row col-12 alert alert-info mt-3" *ngIf="clients.length === 0">
       <h3 class="text-center col-12">Not results found for clients</h3>
     </div>
   </div>
