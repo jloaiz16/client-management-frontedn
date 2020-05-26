@@ -24,6 +24,7 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
   public isEditing: boolean = false;
   public loadForm: boolean = false;
   public clientForm: FormGroup;
+  public errors: string[];
 
   constructor(
     private clientService: ClientService,
@@ -77,9 +78,8 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
   public createClient(): void {
     this.client = this.clientForm.getRawValue();
     this.subs.add(
-      this.clientService
-        .createClient(this.client)
-        .subscribe((client: Client) => {
+      this.clientService.createClient(this.client).subscribe(
+        (client: Client) => {
           Swal.fire(
             'New Client',
             'The client ' +
@@ -90,7 +90,12 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
             'success'
           );
           this.router.navigateByUrl('clients');
-        })
+        },
+        (err) => {
+          this.errors = err.error.errors as string[];
+          console.error(this.errors);
+        }
+      )
     );
   }
 
@@ -102,9 +107,8 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
     this.client.email = this.clientForm.controls.email.value;
     this.client.lastName = this.clientForm.controls.lastName.value;
     this.subs.add(
-      this.clientService
-        .updateClient(this.client)
-        .subscribe((client: Client) => {
+      this.clientService.updateClient(this.client).subscribe(
+        (client: Client) => {
           Swal.fire(
             'Client Updated',
             'The client ' +
@@ -115,7 +119,12 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
             'success'
           );
           this.router.navigateByUrl('clients');
-        })
+        },
+        (err) => {
+          this.errors = err.error.errors as string[];
+          console.error(this.errors);
+        }
+      )
     );
   }
 }

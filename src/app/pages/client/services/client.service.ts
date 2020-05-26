@@ -36,6 +36,10 @@ export class ClientService {
       })
       .pipe(
         catchError((e) => {
+          // Bad request
+          if (e.status === 400) {
+            return throwError(e);
+          }
           Swal.fire('Error', e.error.message, 'error');
           console.error(e.error.message);
           return throwError(e);
@@ -71,6 +75,10 @@ export class ClientService {
       })
       .pipe(
         catchError((e) => {
+          // Bad request
+          if (e.status === 400) {
+            return throwError(e);
+          }
           Swal.fire('Error', e.error.message, 'error');
           console.error(e.error.message);
           return throwError(e);
