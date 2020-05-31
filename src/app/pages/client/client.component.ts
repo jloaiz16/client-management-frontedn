@@ -28,7 +28,7 @@ export class ClientComponent extends UnsubscribeOnDestroyAdapter
   /**
    * Method to redirect to form create client
    */
-  goToCreateClient(): void {
+  public goToCreateClient(): void {
     this.router.navigate(['clients/create']);
   }
 
@@ -36,7 +36,21 @@ export class ClientComponent extends UnsubscribeOnDestroyAdapter
    * Method to delete a client from the list
    * @param id : number
    */
-  deleteClientFromList(id: number): void {
+  public deleteClientFromList(id: number): void {
     this.clients = this.clients.filter((client: Client) => client.id !== id);
+  }
+
+  /**
+   * Method to get clients by name
+   * @param value : any
+   */
+  public searchClient(event: any): void {
+    this.subs.add(
+      this.clientService
+        .getClientsByName(event.target.value.toLowerCase())
+        .subscribe((response: Client[]) => {
+          this.clients = response;
+        })
+    );
   }
 }

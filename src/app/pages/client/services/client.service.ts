@@ -25,6 +25,15 @@ export class ClientService {
   }
 
   /**
+   * Method to get all clients by name
+   */
+  public getClientsByName(value: string): Observable<Client[]> {
+    return this.service.get<Client[]>(this.apiUrl + 'clients/list', {
+      params: { name: value },
+    });
+  }
+
+  /**
    * Method to create a client
    * @param client : Client
    * @returns client
