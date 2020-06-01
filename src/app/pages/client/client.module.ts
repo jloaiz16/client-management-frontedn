@@ -7,9 +7,10 @@ import { ClientRoutingModule } from './client-routing.module';
 import { CardComponent } from './components/card/card.component';
 import { CreateComponent } from './components/create/create.component';
 import { ClientService } from 'src/app/pages/client/services/client.service';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
-  declarations: [ClientComponent, CardComponent, CreateComponent],
+  declarations: [ClientComponent, CardComponent, CreateComponent, PaginatorComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

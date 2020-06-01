@@ -9,6 +9,10 @@ const routes: Routes = [
     component: ClientComponent,
   },
   {
+    path: 'page/:page',
+    component: ClientComponent,
+  },
+  {
     path: 'create',
     component: CreateComponent,
   },

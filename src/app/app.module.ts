@@ -6,6 +6,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { Routing } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { Routing } from './app-routing.module';
     FooterComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, Routing],
+  imports: [BrowserModule, Routing, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

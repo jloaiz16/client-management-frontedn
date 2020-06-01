@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { IServerResponse } from 'src/app/shared/models/server-response.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -20,8 +21,10 @@ export class ClientService {
    * Method to get all clients
    * @returns clients
    */
-  public getClients(): Observable<Client[]> {
-    return this.service.get<Client[]>(this.apiUrl + 'clients/list');
+  public getClients(page: number): Observable<IServerResponse> {
+    return this.service.get<IServerResponse>(
+      this.apiUrl + 'clients/list/page/' + page
+    );
   }
 
   /**

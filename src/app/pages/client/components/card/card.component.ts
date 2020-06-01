@@ -13,12 +13,39 @@ import { Router } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/utils/unsubscribe-adapter';
 import Swal from 'sweetalert2';
+import {
+  state,
+  style,
+  transition,
+  animate,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('animate', [
+      state(
+        'open',
+        style({
+          height: '230px',
+          opacity: 1,
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '100px',
+          opacity: 0.5,
+        })
+      ),
+      transition('* => closed', [animate('1s')]),
+      transition('* => open', [animate('0.5s')]),
+    ]),
+  ],
 })
 export class CardComponent extends UnsubscribeOnDestroyAdapter
   implements OnInit, OnChanges {
