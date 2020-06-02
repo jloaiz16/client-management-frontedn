@@ -2,7 +2,7 @@ export class Client {
   id: number;
   name: string;
   lastName: string;
-  createdAt: string;
+  createAt: string;
   email: string;
   photo: string;
 }

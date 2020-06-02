@@ -17,7 +17,7 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
     id: null,
     name: null,
     lastName: null,
-    createdAt: null,
+    createAt: null,
     email: null,
     photo: null,
   };
@@ -69,6 +69,7 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
       name: [this.client.name, [Validators.required, Validators.minLength(4)]],
       lastName: [this.client.lastName],
       email: [this.client.email, [Validators.required, Validators.email]],
+      createAt: [this.client.createAt, [Validators.required]],
     });
   }
 
@@ -106,6 +107,7 @@ export class CreateComponent extends UnsubscribeOnDestroyAdapter
     this.client.name = this.clientForm.controls.name.value;
     this.client.email = this.clientForm.controls.email.value;
     this.client.lastName = this.clientForm.controls.lastName.value;
+    this.client.createAt = this.clientForm.controls.createAt.value;
     this.subs.add(
       this.clientService.updateClient(this.client).subscribe(
         (client: Client) => {

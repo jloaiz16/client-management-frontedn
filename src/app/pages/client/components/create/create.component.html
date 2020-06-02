@@ -68,6 +68,24 @@
       >
     </div>
     <div class="form-group">
+      <label>Date</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="createAt"
+        placeholder="Type a name"
+      />
+    </div>
+    <div
+      class="col-12 mt-1 mb-2 alert alert-danger"
+      *ngIf="
+        clientForm.controls.createAt.errors &&
+        clientForm.controls.createAt.touched
+      "
+    >
+      <span class="label-message">Name is required</span>
+    </div>
+    <div class="form-group">
       <button
         *ngIf="isEditing"
         class="btn btn-primary"

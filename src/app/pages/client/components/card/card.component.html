@@ -15,7 +15,7 @@
         <p class="card-text">{{ client.email }}</p>
         <div class="card-text row">
           <small class="text-muted col-7">{{
-            client.createdAt | date: "dd-MM-yyyy"
+            client.createAt | date: "dd-MM-yyyy"
           }}</small>
           <div class="row col-12">
             <button class="btn btn-primary col-5" (click)="updateClient()">
